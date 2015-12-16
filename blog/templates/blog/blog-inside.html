@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% block notes %}
+    <div class="main">
+        <div class="c-article">
+            <div class="l-article">
+                <div class="article__date">
+                    {{ post.date }}
+                </div>
+                <div class="article__title--big">
+                    {{ post.title }}
+                </div>
+                <div class="article__text">
+                    {{ post.post_set.get.text|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock notes %}
+
+{% block includesfooter %}
+    {% include 'footer.html' %}
+    {% include 'slider.html' %}
+{% endblock includesfooter %}
+

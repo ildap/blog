@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+
+<script>
+        $('.bx-slider').bxSlider({
+            pagerSelector: '.bx-pager-block',
+            pagerType: 'short',
+            pagerShortSeparator: '/',
+            nextText: '',
+            prevText: '',
+            onSlideAfter: function($slideElement, oldIndex, newIndex){
+                $('.slider__title').html(($($slideElement).find('img').attr('data-title')));
+            }
+        });
+</script>

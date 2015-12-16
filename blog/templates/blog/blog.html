@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% block notes %}
+    <div class="main">
+        <div class="c-articles-list">
+            <div class="l-articles-list">
+            <ul class="articles-list">
+                {% for post in blog %}
+                <li class="l-article--preview">
+                    <div class="l-article--preview__img-block">
+                        <a class="article--preview__img-link" href="{% url 'blog:blog' post.id %}">
+                            <img class="article--preview__img" src="{% static 'posters/' %}{{ post.id }}.jpg" alt=""/>
+                        </a>
+                    </div>
+
+                    <div class="l-article-desc--preview">
+                        <div class="article__date">
+                            {{ post.date }}
+                        </div>
+                        <div class="article__title">
+                            <a class="article__title-link" href="{% url 'blog:blog' post.id %}">
+                                {{post.title}}
+                            </a>
+                        </div>
+                        <div class="article__text">
+                            {{ post.text }}
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+                <li class="l-article--preview">
+
+                {% if blog.has_previous %}
+                <a class="page" href="{% url 'blog:index' blog.previous_page_number %}">{{ blog.previous_page_number }}</a>
+                {% endif %}
+                {{ blog.number }}
+                {% if blog.has_next %}
+                <a class="page" href = "{% url 'blog:index' blog.next_page_number %}">{{blog.next_page_number}}</a>
+                {% endif %}
+
+
+                </li>
+            </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock notes %}
+
+{% block includesfooter %}
+{% include 'footer.html' %}
+{% endblock includesfooter %}

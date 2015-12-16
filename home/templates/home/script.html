@@ -1,0 +1,21 @@
+<script>
+//main-form__btn main-form__btn-show-form js-show-form
+    $('.js-show-form').on('click', function(){
+        $('.js-form').slideDown('slow');
+        $(this).slideUp();
+        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    });
+    $('.modal__close').on('click',function(){$('.modal-shadow').css({'display':'none'})});
+    function animation(){
+        var newAngle = +$('.js-animation').attr('data-angle') + 90;
+        $('.js-animation').attr('data-angle', newAngle);
+        $('.js-animation').css({
+            '-webkit-transform': 'translate(-50%, 0) rotate(' + newAngle + 'deg)',
+            '-ms-transform': 'translate(-50%, 0) rotate(' + newAngle + 'deg)',
+            'transform': 'translate(-50%, 0) rotate(' + newAngle + 'deg)'
+        });
+    }
+    $('.js-input').focus(animation);
+    $('.js-checkbox').change(animation);
+
+</script>

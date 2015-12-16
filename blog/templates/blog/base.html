@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head lang="ru">
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}"/>
+    <!--<meta name="viewport" content="width=980"/>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <title>Зоосад</title>
+</head>
+<body>
+    <div class="p-blog">
+        {% include 'header.html' %}
+
+        {% block notes %}{% endblock notes %}
+    </div>
+</body>
+{%  block includesfooter %}{% endblock includesfooter %}
+</html>

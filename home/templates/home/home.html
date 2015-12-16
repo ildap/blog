@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head lang="ru">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.png"/>
+    <meta name="viewport" content="width=1024"/>
+
+    <link rel="stylesheet" href="static/css/style.css"/>
+
+    <title>Зоосад</title>
+</head>
+<body>
+
+<div class="p-home">
+    <div class="header">
+
+        <div class="c-nav-bar">
+            <div class="l-nav-bar">
+                <a class="nav-bar__link" href="{% url 'blog:index' %}">Наш блог</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main">
+
+        <div class="c-brand">
+            <div class="l-brand">
+                <a class="logo" href="">
+                    <img class="logo__img" src="static/img/logo.png" alt=""/>
+                </a>
+                <h3>{{ ok }}</h3>
+            </div>
+        </div>
+
+        <div class="c-main-msg">
+            <div class="l-main-msg">
+                <div class="main-msg">
+                    Богатство мировой литературы Платона свидетельствует о том, что диахронический подход готично
+                    представляет собой резкий общекультурный цикл.
+                </div>
+            </div>
+        </div>
+
+        {% if status != 'ok' %}
+            {% include 'home/form.html' %}
+        {% endif %}
+
+    </div>
+
+    <div class="footer" {% if status == 'error' %} style='display:none' {% endif %}>
+        <div class="c-animation">
+            <div class="l-animation">
+                <div class="animation">
+                    <div class="animation__img js-animation" data-angle="0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% if status == 'ok' %}
+    <div class="modal-shadow">
+        <div class="modal">
+            <a class="modal__close">&#215;</a>
+            <div class="modal__msg">
+                <div class="modal__msg-text">
+                    Спасибо, Ваша заявка принята!
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% include 'footer.html' %}
+{% include 'home/script.html' %}
+
+</body>
+</html>

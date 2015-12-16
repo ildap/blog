@@ -1,0 +1,50 @@
+<div class="c-main-form">
+    <div class="l-main-form">
+        <button class="main-form__btn main-form__btn-show-form js-show-form"
+         {% if status == 'error' %}style="display:none"{% endif %}>Хочу заполнить форму</button>
+        <form class="main-form js-form" style="{% if status == 'error' %}display: block{% endif %}" action="/" method="post">
+            {% csrf_token %}
+            <div class="main-form__title">
+                Я хочу
+            </div>
+            <div class="main-form-group-checkbox">
+                <div class="main-form-group-checkbox__block">
+                    <label class="main-form-group-checkbox__label">
+                        <!--<input class="main-form__checkbox js-checkbox" type="checkbox" name="good_team"/>-->
+                        {{ form.good_team }}
+                        <span class="main-form-group-checkbox__desc">
+                            работать в отличной команде
+                        </span>
+                    </label>
+                </div>
+
+                <div class="main-form-group-checkbox__block">
+                    <label class="main-form-group-checkbox__label">
+                        {{ form.good_code }}
+                        <span class="main-form-group-checkbox__desc">
+                            писать крутой код
+                        </span>
+                    </label>
+                </div>
+
+                <div class="main-form-group-checkbox__block">
+                    <label class="main-form-group-checkbox__label">
+                        {{ form.other_goods }}
+                        <span class="main-form-group-checkbox__desc">
+                            кучу других ништяков
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="main-form__title">
+                Как с вами связаться?
+            </div>
+            <div class="main-form-group-input">
+                {{ form.name }}{{ form.name.errors }}
+                {{ form.phone }}{{ form.phone.errors }}
+                {{ form.mail }}{{ form.mail.errors }}
+            </div>
+            <button class="main-form__btn">Отправить</button>
+        </form>
+    </div>
+</div>
